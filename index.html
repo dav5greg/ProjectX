@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#24151b">
+  <meta name="description" content="Un piccolo regalo per Bagigia — 39 anni.">
+  <title>Per Bagigia ❤️</title>
+  <style>
+    :root{
+      --bg:#21151a; --bg2:#3a202a; --paper:#fffaf4; --ink:#2c1d22;
+      --gold:#c8a66a; --rose:#d99aa8; --muted:#7f6970; --line:#eadbd3;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;color:var(--ink)}
+    body{background:radial-gradient(circle at 50% 15%,#5b3340 0,#2b1a21 42%,#171014 100%);overflow-x:hidden}
+    button,input{font:inherit}
+    .screen{min-height:100svh;display:grid;place-items:center;padding:24px;position:relative}
+    .hidden{display:none!important}
+    #gift:target{display:grid}
+    .intro{color:#fff;text-align:center;overflow:hidden}
+    body:has(#gift:target) #intro{display:none}
+    .intro:before,.intro:after{content:"";position:absolute;border:1px solid rgba(200,166,106,.28);border-radius:50%;width:260px;height:260px}
+    .intro:before{top:-100px;left:-130px}.intro:after{bottom:-120px;right:-140px}
+    .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:.72rem;color:#ddcaa4;margin-bottom:22px}
+    h1{font-size:clamp(2.7rem,13vw,5.5rem);line-height:.92;font-weight:400;margin:0 0 16px}
+    .intro p{font-size:1.05rem;color:#eadfe0;max-width:320px;line-height:1.6;margin:0 auto 34px}
+    .seal{width:92px;height:92px;border:1px solid rgba(200,166,106,.7);border-radius:50%;margin:0 auto 28px;display:grid;place-items:center;color:var(--gold);font-size:1.9rem;animation:pulse 2.8s ease-in-out infinite}
+    .open-btn{border:1px solid var(--gold);background:transparent;color:#fff;padding:14px 25px;border-radius:999px;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;cursor:pointer;transition:.25s}
+    .open-btn:hover{background:rgba(200,166,106,.12);transform:translateY(-1px)}
+    @keyframes pulse{50%{transform:scale(1.04);box-shadow:0 0 0 9px rgba(200,166,106,.04)}}
+    .reveal{animation:reveal .8s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes reveal{from{opacity:0;transform:scale(.96) translateY(14px)}to{opacity:1;transform:none}}
+    .ticket-wrap{width:min(100%,430px)}
+    .ticket{
+      position:relative;background:var(--paper);border-radius:20px;box-shadow:0 28px 80px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .ticket:before,.ticket:after{content:"";position:absolute;z-index:2;width:24px;height:24px;background:#2b1a21;border-radius:50%;top:118px}
+    .ticket:before{left:-12px}.ticket:after{right:-12px}
+    .ticket-top{padding:30px 28px 26px;text-align:center;background:linear-gradient(135deg,#fffaf4,#f8eee8)}
+    .mini{font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:#a27f53}
+    .ticket-title{font-size:1.55rem;line-height:1.1;margin:10px 0 5px;font-weight:400}
+    .couple{font-size:.78rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+    .tear{border-top:2px dashed #dccac0;margin:0 22px}
+    .ticket-body{padding:26px 28px 30px}
+    .row{display:grid;grid-template-columns:28px 1fr;gap:10px;margin:0 0 17px;align-items:start}
+    .icon{font-family:system-ui;font-size:1.05rem}
+    .label{font-size:.74rem;color:var(--muted);display:block;margin-bottom:2px}
+    .value{font-size:1rem;line-height:1.35}
+    .message{margin:22px 0 24px;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fffdfa;line-height:1.6;font-size:.95rem}
+    .message strong{font-weight:normal;color:#8d5261}
+    .code-box{margin:0 0 16px;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fffdfa;text-align:center}
+    .code-label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+    .code-value{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1.05rem;letter-spacing:.08em;font-weight:600;word-break:break-all;padding:11px 8px;background:#f6eee8;border-radius:9px;color:#3a272d}
+    .copy-btn{margin-top:10px;border:1px solid #d8c5bc;background:transparent;color:#62464f;border-radius:9px;padding:9px 14px;cursor:pointer;font-size:.78rem}
+    .copy-btn:active{transform:translateY(1px)}
+    .copy-hint{font-size:.74rem;color:#927f83;margin-top:11px;line-height:1.4}
+    .redeem{width:100%;margin-top:0;border:0;border-radius:11px;padding:14px;background:#2c1d22;color:#fff;cursor:pointer;letter-spacing:.04em}
+    .redeem:active{transform:translateY(1px)}
+    .fine{font-size:.7rem;color:#927f83;text-align:center;margin:12px 4px 0;line-height:1.45}
+    .footer{text-align:center;color:#dcc8c0;font-size:.7rem;margin-top:18px;letter-spacing:.06em}
+    .sparkle{position:absolute;inset:0;pointer-events:none}
+    .sparkle i{position:absolute;width:3px;height:3px;background:#e5cfa4;border-radius:50%;opacity:.6;animation:float 5s linear infinite}
+    @keyframes float{from{transform:translateY(10vh);opacity:0}20%{opacity:.6}90%{opacity:.15}to{transform:translateY(-100vh);opacity:0}}
+    @media(max-width:380px){.screen{padding:16px}.ticket-top{padding:25px 22px 22px}.ticket-body{padding:23px 22px 25px}}
+  </style>
+</head>
+<body>
+  <!-- =========================================================
+       CONFIGURAZIONE REGALO — MODIFICA QUI
+       ========================================================= -->
+  <script>
+    const GIFT_CODE = "INSERISCI-QUI-IL-CODICE";
+    const DISNEY_PLUS_URL = "https://www.disneyplus.com/";
+    const EMAIL_SUBJECT = "Ciao Bagigia, riscatta il tuo regalo";
+  </script>
+
+  <main>
+    <section id="intro" class="screen intro">
+      <div class="sparkle" aria-hidden="true">
+        <i style="left:13%;animation-delay:.4s"></i><i style="left:28%;animation-delay:2s"></i>
+        <i style="left:44%;animation-delay:1.2s"></i><i style="left:67%;animation-delay:3s"></i>
+        <i style="left:82%;animation-delay:1.8s"></i>
+      </div>
+      <div>
+        <div class="seal">♥</div>
+        <div class="eyebrow">Una piccola sorpresa per la</div>
+        <h1>Bagigia</h1>
+        <p>39 anni meritano un regalo che duri più di una sera.</p>
+        <a class="open-btn" href="#gift">Apri il regalo</a>
+      </div>
+    </section>
+
+    <section id="gift" class="screen hidden">
+      <div class="ticket-wrap reveal">
+        <article class="ticket" aria-label="Biglietto regalo cinema">
+          <header class="ticket-top">
+            <div class="mini">Cinema</div>
+            <div class="ticket-title">“Divano e copertina”</div>
+            <div class="couple">Couple Edition</div>
+          </header>
+          <div class="tear"></div>
+          <div class="ticket-body">
+            <div class="row"><div class="icon">🍿</div><div><span class="label">Titolo</span><span class="value">Il prossimo film lo scegli tu</span></div></div>
+            <div class="row"><div class="icon">👩‍❤️‍👨</div><div><span class="label">Spettatori</span><span class="value">2</span></div></div>
+            <div class="row"><div class="icon">🎟️</div><div><span class="label">Ingresso</span><span class="value">365 giorni</span></div></div>
+            <div class="row"><div class="icon">📅</div><div><span class="label">Validità</span><span class="value">Da oggi</span></div></div>
+
+            <div class="message">
+              Perché i film sono belli, ma quelli sul divano, sotto una copertina,
+              con te accanto, sono tutta un'altra storia. ❤️<br><br>
+              <strong>Buon 39° compleanno, Bagigia.</strong>
+            </div>
+
+            <div class="code-box">
+              <div class="code-label">Il tuo codice regalo</div>
+              <div class="code-value" id="giftCode"></div>
+              <button class="copy-btn" type="button" id="copyBtn">Copia il codice</button>
+              <div class="copy-hint">Copia questo codice e poi riscatta il regalo.</div>
+            </div>
+
+            <button class="redeem" type="button" id="redeemBtn">Riscatta il regalo</button>
+            <p class="fine">Ti porterà direttamente su Disney+ per utilizzare il tuo regalo. ❤️</p>
+          </div>
+        </article>
+        <div class="footer">Fatto apposta per te · ♥</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const intro = document.getElementById("intro");
+    const gift = document.getElementById("gift");
+    const giftCode = document.getElementById("giftCode");
+    const copyBtn = document.getElementById("copyBtn");
+    const redeemBtn = document.getElementById("redeemBtn");
+
+    giftCode.textContent = GIFT_CODE;
+
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(GIFT_CODE);
+        copyBtn.textContent = "✓ Codice copiato";
+        setTimeout(() => copyBtn.textContent = "Copia il codice", 1800);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(giftCode);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        copyBtn.textContent = "Selezionato — copia";
+        setTimeout(() => copyBtn.textContent = "Copia il codice", 1800);
+      }
+    });
+
+    redeemBtn.addEventListener("click", () => {
+      window.open(DISNEY_PLUS_URL, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>
